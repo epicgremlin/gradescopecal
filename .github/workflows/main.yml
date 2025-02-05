@@ -55,14 +55,13 @@ jobs:
         git config --global user.name 'planit'
         git config --global user.email 'planit@tanjeffreyz.github.io'
         
+        # Ensure we have the latest changes
+        git fetch origin main
+        git reset --hard origin/main  # Reset local branch to exactly match remote
+        
+        # Apply changes and push forcefully
         git add . || true
         git commit -m 'Updated assignments' || true
+        git push --force origin main  # Force push to overwrite remote
         
-        # Ensure we have the latest changes from remote
-        git fetch origin main
-        git reset --hard origin/main  # Reset local branch to match remote
-        
-        git pull --rebase origin main  # Reapply local commits on top of the latest remote
-        
-        git push origin main
-        git push -f origin main:github-pages
+        git push --force origin main:github-pages  # Also push to GitHub Pages
