@@ -54,6 +54,5 @@ jobs:
       run: |
         git add . || true
         git commit -m 'Updated assignments' || true
-        git pull --rebase origin main  # Fetch latest changes before pushing
         git push origin main
         git push -f origin main:github-pages
